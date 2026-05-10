@@ -56,9 +56,12 @@ export class HomePage {
     var result = await this.tmdb.get(options);
     this.movies = result.data.results;
   }
+onClear() {
+  this.searchQuery = '';
+  this.getTrending();
+}
 
-
-   async onMovieClick(movie: any) {
+async onMovieClick(movie: any) {
     await this.data.set('selectedMovie', movie);
     this.router.navigate(['/movie-details']);
   }

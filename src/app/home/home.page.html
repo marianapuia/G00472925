@@ -16,7 +16,7 @@
   </ion-item>
 
   <ion-button expand="block" (click)="onSearch()">SEARCH</ion-button>
-
+  <ion-button expand="block" fill="outline" (click)="onClear()">CLEAR</ion-button>  
   <h2>{{ listTitle }}</h2>
 
   <ion-card *ngFor="let movie of movies" button="true" (click)="onMovieClick(movie)">
