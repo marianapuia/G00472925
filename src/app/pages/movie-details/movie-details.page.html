@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ movie?.title }}</ion-title>
+    <ion-buttons slot="end">
+     <ion-button [routerLink]="'/home'">
+      <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="'/home'">
+         <ion-icon name="home" slot="icon-only"></ion-icon>
+     </ion-button>
+     <ion-button [routerLink]="'/favourites'">
+      <ion-icon name="heart" slot="icon-only"></ion-icon>
+     </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>{{ movie?.overview }}</p>
+
+  <ion-button *ngIf="!isFav" (click)="toggleFavourite()">
+    <ion-icon slot="start" name="heart"></ion-icon>
+    Add To Favourites
+  </ion-button>
+
+  <ion-button *ngIf="isFav" (click)="toggleFavourite()">
+    <ion-icon slot="start" name="heart"></ion-icon>
+    Remove From Favourites
+  </ion-button>
+
+  <h2>Cast</h2>
+  <ion-card *ngFor="let c of cast" button="true" (click)="onPersonClick(c.id)">
+    <ion-card-content>
+      <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
+      <div *ngIf="!c.profile_path">No image</div>
+      <p>{{ c.character }}</p>
+      <p>{{ c.name }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Crew</h2>
+  <ion-card *ngFor="let c of crew" button="true" (click)="onPersonClick(c.id)">
+    <ion-card-content>
+      <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
+      <div *ngIf="!c.profile_path">No image</div>
+      <p>{{ c.job }}</p>
+      <p>{{ c.name }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ studentNumber }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/favourites'">
+        <ion-icon name="heart" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Search</ion-label>
+    <ion-input placeholder="Movie Name" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="onSearch()">SEARCH</ion-button>
+
+  <h2>{{ listTitle }}</h2>
+
+  <ion-card *ngFor="let movie of movies" button="true" (click)="onMovieClick(movie)">
+    <ion-card-content>
+      <img *ngIf="movie.poster_path" [src]="imgBase + movie.poster_path" width="150" />
+      <div *ngIf="!movie.poster_path">No image</div>
+      <p>{{ movie.overview }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
