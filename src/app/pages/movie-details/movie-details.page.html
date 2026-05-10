@@ -28,23 +28,23 @@
     Remove From Favourites
   </ion-button>
 
-  <h2>Cast</h2>
-  <ion-card *ngFor="let c of cast" button="true" (click)="onPersonClick(c.id)">
-    <ion-card-content>
-      <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
-      <div *ngIf="!c.profile_path">No image</div>
-      <p>{{ c.character }}</p>
-      <p>{{ c.name }}</p>
-    </ion-card-content>
-  </ion-card>
+<h2>Cast</h2>
+<ion-card *ngFor="let c of cast" button="true" (click)="onPersonClick(c.id)">
+  <ion-card-content>
+    <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
+    <div *ngIf="!c.profile_path">No image</div>
+    <p><strong>{{ c.name }}</strong></p>
+    <p *ngIf="c.character">as {{ c.character }}</p>
+  </ion-card-content>
+</ion-card>
 
-  <h2>Crew</h2>
-  <ion-card *ngFor="let c of crew" button="true" (click)="onPersonClick(c.id)">
-    <ion-card-content>
-      <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
-      <div *ngIf="!c.profile_path">No image</div>
-      <p>{{ c.job }}</p>
-      <p>{{ c.name }}</p>
-    </ion-card-content>
-  </ion-card>
+<h2>Crew</h2>
+<ion-card *ngFor="let c of crew" button="true" (click)="onPersonClick(c.id)">
+  <ion-card-content>
+    <img *ngIf="c.profile_path" [src]="imgBase + c.profile_path" width="120" />
+    <div *ngIf="!c.profile_path">No image</div>
+    <p><strong>{{ c.name }}</strong></p>
+    <p *ngIf="c.job">{{ c.job }}</p>
+  </ion-card-content>
+</ion-card>
 </ion-content>

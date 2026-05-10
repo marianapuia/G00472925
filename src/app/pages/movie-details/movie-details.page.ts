@@ -75,6 +75,6 @@ export class MovieDetailsPage {
 
   async onPersonClick(personId: number) {
     await this.data.set('selectedPersonId', personId);
-    this.router.navigate(['/details']);
+    this.router.navigate(['/person-details']);
   }
 }
